@@ -1,6 +1,18 @@
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 
+function createPromise(delay, value) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (value === 'fulfilled') {
+        resolve(delay);
+      } else {
+        reject(delay);
+      }
+    }, delay);
+  });
+};
+
 document.querySelector('.form').addEventListener('submit', event => {
     event.preventDefault();
 
@@ -14,15 +26,3 @@ document.querySelector('.form').addEventListener('submit', event => {
 
     event.target.reset(); 
 });
-
-function createPromise(delay, value) {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      if (value === 'fulfilled') {
-        resolve(delay);
-      } else {
-        reject(delay);
-      }
-    }, delay);
-  });
-};
